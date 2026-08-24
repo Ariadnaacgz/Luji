@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e98db5">
+
+    <title>Luji</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🛼
+            </div>
+
+            <div>
+                <h1>Luji</h1>
+                <span>Tu espacio de patinaje</span>
+            </div>
+
+        </div>
+
+        <button
+            class="notification-button"
+            onclick="toggleNotifications()">
+
+            🔔
+            <span id="notificationBadge"></span>
+
+        </button>
+
+    </header>
+
+
+    <!-- NOTIFICACIONES -->
+
+    <div
+        id="notificationPanel"
+        class="notification-panel">
+
+        <div class="notification-header">
+
+            <h3>Notificaciones</h3>
+
+            <button onclick="toggleNotifications()">
+                ✕
+            </button>
+
+        </div>
+
+        <div id="notificationsContainer">
+
+            <p class="empty-text">
+                No hay notificaciones nuevas.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <main>
+
+
+        <!-- =========================
+             INICIO
+        ========================== -->
+
+        <section
+            id="inicio"
+            class="page active">
+
+            <div class="welcome-card">
+
+                <div class="welcome-text">
+
+                    <span class="small-title">
+                        HOLA, LUJI
+                    </span>
+
+                    <h2>
+                        Todo lo que necesitás
+                        <br>
+                        para seguir adelante.
+                    </h2>
+
+                    <p>
+                        Organizá tus entrenamientos,
+                        competencias y momentos de calma
+                        desde un solo lugar.
+                    </p>
+
+                </div>
+
+                <div class="welcome-skate">
+                    🛼
+                </div>
+
+            </div>
+
+
+            <!-- PRÓXIMA COMPETENCIA -->
+
+            <div class="section-title">
+
+                <div>
+
+                    <span>
+                        PRÓXIMO DESAFÍO
+                    </span>
+
+                    <h2>
+                        Competencia
+                    </h2>
+
+                </div>
+
+                <button
+                    onclick="showPage('competencias')">
+
+                    Ver todas
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="nextCompetitionCard"
+                class="next-competition-card">
+
+                <p class="empty-text">
+                    Todavía no agregaste ninguna competencia.
+                </p>
+
+            </div>
+
+
+            <!-- ENTRENAMIENTO -->
+
+            <div class="section-title">
+
+                <div>
+
+                    <span>
+                        HOY
+                    </span>
+
+                    <h2>
+                        Entrenamiento
+                    </h2>
+
+                </div>
+
+                <button
+                    onclick="showPage('entrenamientos')">
+
+                    Ver horario
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="todayTrainingCard"
+                class="training-highlight">
+
+                <p class="empty-text">
+                    No hay entrenamientos programados para hoy.
+                </p>
+
+            </div>
+
+
+            <!-- ACCESOS -->
+
+            <div class="quick-grid">
+
+                <button
+                    onclick="showPage('temporizador')"
+                    class="quick-card">
+
+                    <div class="quick-icon">
+                        ⏱️
+                    </div>
+
+                    <h3>
+                        Temporizador
+                    </h3>
+
+                    <p>
+                        Prepará tu entrenamiento.
+                    </p>
+
+                </button>
+
+
+                <button
+                    onclick="showPage('ansiedad')"
+                    class="quick-card">
+
+                    <div class="quick-icon">
+                        🎧
+                    </div>
+
+                    <h3>
+                        Momento de calma
+                    </h3>
+
+                    <p>
+                        Respiración y audio.
+                    </p>
+
+                </button>
+
+
+                <button
+                    onclick="showPage('entrenamientos')"
+                    class="quick-card">
+
+                    <div class="quick-icon">
+                        🛼
+                    </div>
+
+                    <h3>
+                        Entrenamientos
+                    </h3>
+
+                    <p>
+                        Organizá tu semana.
+                    </p>
+
+                </button>
+
+
+                <button
+                    onclick="showPage('competencias')"
+                    class="quick-card">
+
+                    <div class="quick-icon">
+                        🏆
+                    </div>
+
+                    <h3>
+                        Competencias
+                    </h3>
+
+                    <p>
+                        Prepará tus desafíos.
+                    </p>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             TEMPORIZADOR
+        ========================== -->
+
+        <section
+            id="temporizador"
+            class="page">
+
+            <div class="page-heading">
+
+                <span>
+                    ENTRENAMIENTO
+                </span>
+
+                <h2>
+                    Temporizador
+                </h2>
+
+                <p>
+                    Concentrate en cada momento
+                    de tu entrenamiento.
+                </p>
+
+            </div>
+
+
+            <div class="timer-card">
+
+                <div id="timerDisplay">
+                    05:00
+                </div>
+
+
+                <div class="timer-controls">
+
+                    <button
+                        onclick="startTimer()"
+                        class="primary-button">
+
+                        ▶ Iniciar
+
+                    </button>
+
+
+                    <button
+                        onclick="pauseTimer()"
+                        class="secondary-button">
+
+                        ⏸ Pausar
+
+                    </button>
+
+
+                    <button
+                        onclick="resetTimer()"
+                        class="secondary-button">
+
+                        ↻ Reiniciar
+
+                    </button>
+
+                </div>
+
+
+                <div class="timer-presets">
+
+                    <button onclick="setTimer(60)">
+                        1 min
+                    </button>
+
+                    <button onclick="setTimer(300)">
+                        5 min
+                    </button>
+
+                    <button onclick="setTimer(600)">
+                        10 min
+                    </button>
+
+                    <button onclick="setTimer(900)">
+                        15 min
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CALMA
+        ========================== -->
+
+        <section
+            id="ansiedad"
+            class="page">
+
+            <div class="page-heading">
+
+                <span>
+                    MOMENTO DE CALMA
+                </span>
+
+                <h2>
+                    Estoy con vos
+                </h2>
+
+                <p>
+                    Cuando necesites bajar un poco
+                    el ritmo, podés quedarte acá.
+                </p>
+
+            </div>
+
+
+            <!-- RESPIRACIÓN -->
+
+            <div class="breathing-card">
+
+                <span class="breathing-label">
+                    EJERCICIO DE RESPIRACIÓN
+                </span>
+
+                <h3>
+                    Respirá conmigo
+                </h3>
+
+                <p>
+                    Seguí el ritmo del círculo y
+                    concentráte solamente en tu respiración.
+                </p>
+
+
+                <div class="breathing-animation">
+
+                    <div id="breathingCircle">
+
+                        <span id="breathingText">
+                            Preparada
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div id="breathingTimer">
+                    4 segundos
+                </div>
+
+
+                <button
+                    id="breathingButton"
+                    class="primary-button"
+                    onclick="toggleBreathing()">
+
+                    ▶ Comenzar respiración
+
+                </button>
+
+            </div>
+
+
+
+            <!-- AUDIO -->
+
+            <div class="calm-card">
+
+                <div class="calm-icon">
+                    🎧
+                </div>
+
+                <h2>
+                    Un momento para vos
+                </h2>
+
+                <p>
+                    Poné play y escuchá tu audio.
+                    No tenés que hacer nada más.
+                </p>
+
+
+                <audio
+                    id="lujiAudio"
+                    preload="auto"
+                    controls>
+
+                    <source
+                        src="assets/audio/audio-luji.mp3"
+                        type="audio/mpeg">
+
+                    Tu navegador no puede reproducir
+                    este audio.
+
+                </audio>
+
+
+                <div class="audio-actions">
+
+                    <button
+                        onclick="playAudio()"
+                        class="primary-button">
+
+                        ▶ Reproducir
+
+                    </button>
+
+
+                    <button
+                        onclick="pauseAudio()"
+                        class="secondary-button">
+
+                        ⏸ Pausar
+
+                    </button>
+
+
+                    <button
+                        onclick="restartAudio()"
+                        class="secondary-button">
+
+                        ↻ Volver a escuchar
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ENTRENAMIENTOS
+        ========================== -->
+
+        <section
+            id="entrenamientos"
+            class="page">
+
+            <div class="page-heading">
+
+                <span>
+                    ORGANIZACIÓN
+                </span>
+
+                <h2>
+                    Mis entrenamientos
+                </h2>
+
+                <p>
+                    Organizá tus días y horarios
+                    de entrenamiento.
+                </p>
+
+            </div>
+
+
+            <div class="form-card">
+
+                <h3>
+                    Agregar entrenamiento
+                </h3>
+
+
+                <form id="trainingForm">
+
+                    <div class="form-grid">
+
+                        <div class="input-group">
+
+                            <label>
+                                Día
+                            </label>
+
+                            <input
+                                type="date"
+                                id="trainingDate"
+                                required>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>
+                                Hora
+                            </label>
+
+                            <input
+                                type="time"
+                                id="trainingTime"
+                                required>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>
+                                Tipo de entrenamiento
+                            </label>
+
+                            <input
+                                type="text"
+                                id="trainingType"
+                                placeholder="Ej: Técnica y velocidad"
+                                required>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>
+                                Lugar
+                            </label>
+
+                            <input
+                                type="text"
+                                id="trainingPlace"
+                                placeholder="Ej: Pista principal">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Notas
+                        </label>
+
+                        <textarea
+                            id="trainingNotes"
+                            placeholder="Ej: Practicar saltos...">
+                        </textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button">
+
+                        + Agregar entrenamiento
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div class="list-heading">
+
+                <h3>
+                    Próximos entrenamientos
+                </h3>
+
+            </div>
+
+
+            <div
+                id="trainingList"
+                class="cards-list">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             COMPETENCIAS
+        ========================== -->
+
+        <section
+            id="competencias"
+            class="page">
+
+            <div class="page-heading">
+
+                <span>
+                    PRÓXIMOS DESAFÍOS
+                </span>
+
+                <h2>
+                    Competencias
+                </h2>
+
+                <p>
+                    Guardá toda la información
+                    de tus próximas competencias.
+                </p>
+
+            </div>
+
+
+            <div class="form-card">
+
+                <h3>
+                    Agregar competencia
+                </h3>
+
+
+                <form id="competitionForm">
+
+                    <div class="form-grid">
+
+                        <div class="input-group">
+
+                            <label>
+                                Nombre
+                            </label>
+
+                            <input
+                                type="text"
+                                id="competitionName"
+                                placeholder="Ej: Copa Nacional"
+                                required>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>
+                                Fecha
+                            </label>
+
+                            <input
+                                type="date"
+                                id="competitionDate"
+                                required>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>
+                                Hora
+                            </label>
+
+                            <input
+                                type="time"
+                                id="competitionTime">
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>
+                                Lugar
+                            </label>
+
+                            <input
+                                type="text"
+                                id="competitionPlace"
+                                placeholder="Ej: Asunción">
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label>
+                                Categoría
+                            </label>
+
+                            <input
+                                type="text"
+                                id="competitionCategory"
+                                placeholder="Ej: Juvenil">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Información adicional
+                        </label>
+
+                        <textarea
+                            id="competitionNotes"
+                            placeholder="Información importante...">
+                        </textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button">
+
+                        + Agregar competencia
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div
+                id="competitionList"
+                class="cards-list">
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         NAVEGACIÓN
+    ========================== -->
+
+    <nav class="bottom-nav">
+
+        <button
+            onclick="showPage('inicio')"
+            data-page="inicio"
+            class="nav-item active">
+
+            <span>⌂</span>
+
+            <small>
+                Inicio
+            </small>
+
+        </button>
+
+
+        <button
+            onclick="showPage('temporizador')"
+            data-page="temporizador"
+            class="nav-item">
+
+            <span>⏱</span>
+
+            <small>
+                Timer
+            </small>
+
+        </button>
+
+
+        <button
+            onclick="showPage('entrenamientos')"
+            data-page="entrenamientos"
+            class="nav-item">
+
+            <span>🛼</span>
+
+            <small>
+                Entrenos
+            </small>
+
+        </button>
+
+
+        <button
+            onclick="showPage('competencias')"
+            data-page="competencias"
+            class="nav-item">
+
+            <span>🏆</span>
+
+            <small>
+                Competencias
+            </small>
+
+        </button>
+
+
+        <button
+            onclick="showPage('ansiedad')"
+            data-page="ansiedad"
+            class="nav-item">
+
+            <span>♡</span>
+
+            <small>
+                Calma
+            </small>
+
+        </button>
+
+    </nav>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

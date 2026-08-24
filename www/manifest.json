@@ -1,0 +1,11 @@
+{
+    "name": "Luji",
+    "short_name": "Luji",
+    "description": "Tu espacio para patinar, relajarte y disfrutar.",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#fff9fb",
+    "theme_color": "#f4a6c1",
+    "orientation": "portrait",
+    "icons": []
+}
